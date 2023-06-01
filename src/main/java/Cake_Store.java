@@ -96,4 +96,17 @@ public class Cake_Store {
         
 //        Payment(input);
     }
+        
+         public static void Product(Scanner input, Store store){
+           System.out.println("Enter product name: ");
+           String productName= input.next();
+           System.out.println("Enter product price: ");
+           double productPrice= input.nextDouble();
+           System.out.println("Enter product size: ");
+           String productSize= input.next();
+           System.out.println("Enter product flavor: ");
+           String productFlavor= input.next();
+           Product productinfo=new Product( productName, productID, productPrice,  productSize,  productFlavor);
+           store.setProduct(productinfo);
+        
 }
