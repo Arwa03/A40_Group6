@@ -14,7 +14,7 @@
 import java.util.ArrayList;
 
 public class Product {
-    // Instance variables
+    // Instance variabless
     private String name;
     private int productID;
     private double price;
