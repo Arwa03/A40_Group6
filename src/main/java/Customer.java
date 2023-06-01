@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+import java.util.ArrayList;
 
 /**
  *
@@ -25,6 +25,7 @@ public class Customer {
     private String CustomerEmail;
     private String CustomerLocation;
     private Order order;
+    static payment payment;
 
     public Customer(String CustomerFirstName, String CustomerLastName, String CustomerPhoneNumber, String CustomerEmail, String CustomerLocation) {
         this.CustomerFirstName = CustomerFirstName;
@@ -34,6 +35,48 @@ public class Customer {
         this.CustomerLocation = CustomerLocation;
     }
 
+    public String showMenu(ArrayList<Store> AddStore){
+        String expResult = "\n"
+        + "\n------------------------------------------------------------"
+        + "\n                              CAKE STORE"
+        + "\n------------------------------------------------------------";
+       
+        for(int i=0; i<AddStore.size(); i++){
+             expResult  += AddStore.get(i).toString()
+            + "Store name:" +AddStore.get(i).getStoreName()
+            + AddStore.get(i).getProduct().toString()
+            + "\n------------------------------------------------------------";
+        }
+        return expResult;
+    }
+    
+    public void POrder(ArrayList <Store> AddStore, String StoreID, int productID, int orderNo, Customer customer, String date, String time, int quantity){
+        Product product = null;
+        Store store = null;
+        for(int i = 0; i < AddStore.size(); i++){
+            if(AddStore.get(i).getStoreID().equalsIgnoreCase(StoreID)
+                    && AddStore.get(i).getProduct().getProductID()==productID){
+                product = AddStore.get(i).getProduct();
+                store = AddStore.get(i);
+            }
+        }
+        
+        order=new Order(orderNo, customer, date, time, quantity, product);   
+        customer.setOrder(order);
+        System.out.println(customer.getOrder().toString());
+        System.out.println("The order was recevied successfully");
+        
+        payment(store, order);
+    }
+    
+    public void payment(Store store, Order order){
+         payment = new payment(store.getStoreName(),
+                order.getCustomer().getCustomerFirstName(),
+                order.getCustomer().getCustomerLastName(), order);
+         
+         payment.printBill();
+    }
+    
     public String getCustomerFirstName() {
         return CustomerFirstName;
     }
@@ -81,5 +124,5 @@ public class Customer {
     public void setOrder(Order order) {
         this.order = order;
     }
-    
+   
 }

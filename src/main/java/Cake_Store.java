@@ -20,7 +20,7 @@ public class Cake_Store {
         static int orderNo = 1;
         static int productID = 1;
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
+Scanner input = new Scanner(System.in);
         
          
          String choose = null;
@@ -90,14 +90,14 @@ public class Cake_Store {
         AddCustomer.add(customer);
         //CustomerCount++;
         System.out.println("Added Successfully ");
-        showMenu(input);
+        System.out.println(customer.showMenu(AddStore));
         placeOrder(input,customer);
         System.out.println();
         
 //        Payment(input);
     }
-        
-         public static void Product(Scanner input, Store store){
+    
+    public static void Product(Scanner input, Store store){
            System.out.println("Enter product name: ");
            String productName= input.next();
            System.out.println("Enter product price: ");
@@ -108,5 +108,86 @@ public class Cake_Store {
            String productFlavor= input.next();
            Product productinfo=new Product( productName, productID, productPrice,  productSize,  productFlavor);
            store.setProduct(productinfo);
+           
+    }
+    
+//    public static void showMenu(Scanner input){
+//        System.out.println("");
+//        System.out.println("------------------------------------------------------------");
+//        System.out.println("                              CAKE STORE");
+//        System.out.println("------------------------------------------------------------");
+//       
+//        for(int i=0; i<AddStore.size(); i++){
+//            System.out.println(AddStore.get(i).toString());
+//            System.out.println("Store name:"+AddStore.get(i).getStoreName());
+//            System.out.println(AddStore.get(i).getProduct().toString());
+//            System.out.println("------------------------------------------------------------");
+//        } 
         
+        
+//    }
+    
+           
+    
+        
+    
+    
+    public static void placeOrder(Scanner input, Customer customer){
+        System.out.println("Enter the store ID you want");
+        String StoreID= input.next();
+        System.out.println("Enter the productID you want");
+        int productID= input.nextInt();
+//        Product product = null;
+//        Store store = null;
+//        for(int i = 0; i < AddStore.size(); i++){
+//            if(AddStore.get(i).getStoreID().equalsIgnoreCase(StoreID)
+//                    && AddStore.get(i).getProduct().getProductID()==productID){
+//                product = AddStore.get(i).getProduct();
+//                store = AddStore.get(i);
+//            }
+//        }
+        System.out.println("Enter the quantity you want");
+        int quantity= input.nextInt();
+        System.out.println("Enter the order delivery date in format dd-mm : ");
+        String date= input.next();
+        System.out.println("Enter the order delivery time in format hh : ");
+        String time= input.next();
+        
+        customer.POrder(AddStore, StoreID, productID, orderNo, customer, date, time, quantity);
+
+//        Order order=new Order(orderNo, customer, date, time, quantity, product);   
+//        customer.setOrder(order);
+//        System.out.println(customer.getOrder().toString());
+//        System.out.println("The order was recevied successfully");
+
+//         customer.POrder(AddStore, StoreID, productID, orderNo, customer, date, time, quantity);
+          
+//         System.out.print("Enter Payment Taype:\n "
+//                + "1- For Card \n 2- For cash");
+//        int op = input.nextInt();
+//        if(op == 1)
+//            customer.payment.setPaymentOption("Card");
+//        else
+//            customer.payment.setPaymentOption("Cash");
+        
+    }
+    
+//    public static void Payment(Scanner input, Order order, Store store){
+//        payment payment = new payment(store.getStoreName(),
+//                order.getCustomer().getCustomerFirstName(),
+//                order.getCustomer().getCustomerLastName(), order);
+//        
+//        System.out.print("Enter Payment Taype:\n "
+//                + "1- For Card \n 2- For cash");
+//        int op = input.nextInt();
+//        if(op == 1)
+//            payment.setPaymentOption("Card");
+//        else
+//            payment.setPaymentOption("Cash");
+//        
+//        
+//       payment.printBill();
+//    }
 }
+
+

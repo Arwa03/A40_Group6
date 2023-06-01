@@ -30,19 +30,20 @@ public class Order {
         orderNo++;
     }
     
-    public static void showMenu(ArrayList<Store> AddStore){
-        System.out.println("");
-        System.out.println("------------------------------------------------------------");
-        System.out.println("                              CAKE STORE");
-        System.out.println("------------------------------------------------------------");
-       
-        for(int i=0; i<AddStore.size(); i++){
-            System.out.println(AddStore.get(i).toString());
-            System.out.println("Store name:"+AddStore.get(i).getStoreName());
-            System.out.println(AddStore.get(i).getProduct().toString());
-            System.out.println("------------------------------------------------------------");
-        } 
-    }
+//    public String showMenu(ArrayList<Store> AddStore){
+//        String expResult = "\n"
+//        + "\n------------------------------------------------------------"
+//        + "\n                              CAKE STORE"
+//        + "\n------------------------------------------------------------";
+//       
+//        for(int i=0; i<AddStore.size(); i++){
+//             expResult  += AddStore.get(i).toString()
+//            + "Store name:" +AddStore.get(i).getStoreName()
+//            + AddStore.get(i).getProduct().toString()
+//            + "\n------------------------------------------------------------";
+//        }
+//        return expResult;
+//    }
 
     public int getOrderNo() {
         return orderNo;
@@ -96,11 +97,4 @@ public class Order {
     public String toString() {
         return "Order{" + "orderNo=" + orderNo + ", date=" + date + ", time=" + time + ", quantity=" + quantity + '}';
     }
-    
-    
-   
-   
-   
-   
-    
 }
