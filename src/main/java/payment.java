@@ -30,10 +30,6 @@ public class payment {
         int billID = (int)((100)* Math.random()+1);
         return billID;
     }
-//
-//    public void setBillID(int billID) {
-//        this.billID = billID;
-//    }
 
     public String getPaymentOption() {
         return paymentOption;
@@ -77,24 +73,18 @@ public class payment {
         this.discount = discount;
     }
     
-    public void printBill(){
-    System.out.println("------------------------------------------------------------");
-    System.out.println("                              CAKE STORE");
-    System.out.println("------------------------------------------------------------");
-    System.out.println("                        Store:"+this.StoreName);
-    System.out.println("Invoice No:"+ getBillID());
-    System.out.println("order number:"+this.orderID+"          Order Date:"+this.date);
-    System.out.println();
-    System.out.println();
-    System.out.println();
-    System.out.println("ID"+"\tITEM"+"\t"+"Price"+"\t"+"Size"+"\tFlavore"+"\tQuantity");
-    System.out.println(orderinfo.getProduct().toString()+"\t"+orderinfo.getQuantity());
-    System.out.println("____________________________________________________________");
-    double sub=subTotal();
-    System.out.println("SUBTOTAL:\t"+sub+" SR");
-    System.out.println("TOTAL:\t"+(sub+calculateTax(sub))+" SR");
-    System.out.println("Payment option: " + getPaymentOption());
-
+    public String printBill(){
+        String result = "\n------------------------------------------------------------" +
+                       "\n                              CAKE STORE" +
+                       "\n------------------------------------------------------------" +
+                       "\n                        Store:"+this.StoreName +
+                       "\n\nInvoice No:"+ getBillID() + "\n" +
+                         orderinfo.getProduct().toString()+"\t"+orderinfo.getQuantity()+
+                        "\n____________________________________________________________" +
+    
+                        "\nSUBTOTAL: " +subTotal()+ " SR" +
+                        "\nTOTAL: "+(subTotal()+calculateTax(subTotal()))+" SR" ;
+        return result;
     }
      public double subTotal() {
         return orderinfo.getProduct().getPrice() * orderinfo.getQuantity();
@@ -102,12 +92,6 @@ public class payment {
   public static double calculateTax(double subtotal) {
         return subtotal * 0.15;
     }
-
-//    @Override
-//    public String toString() {
-//    }
-    
-    
 }
 
     

@@ -34,6 +34,12 @@ public class Customer {
         this.CustomerEmail = CustomerEmail;
         this.CustomerLocation = CustomerLocation;
     }
+    
+    public void AddCustomer(ArrayList<Customer> AddCustomer, Customer customer){
+        AddCustomer.add(customer);
+        System.out.println(customer.toString());
+        System.out.println("Added Successfully ");
+    }
 
     public String showMenu(ArrayList<Store> AddStore){
         String expResult = "\n"
@@ -42,15 +48,15 @@ public class Customer {
         + "\n------------------------------------------------------------";
        
         for(int i=0; i<AddStore.size(); i++){
-             expResult  += AddStore.get(i).toString()
-            + "Store name:" +AddStore.get(i).getStoreName()
+             expResult  += "\n" + AddStore.get(i).toString()
+            + "\tStore name: " +AddStore.get(i).getStoreName() + "\n"
             + AddStore.get(i).getProduct().toString()
             + "\n------------------------------------------------------------";
         }
         return expResult;
     }
     
-    public void POrder(ArrayList <Store> AddStore, String StoreID, int productID, int orderNo, Customer customer, String date, String time, int quantity){
+    public String POrder(ArrayList <Store> AddStore, String StoreID, int productID, int orderNo, Customer customer, String date, String time, int quantity){
         Product product = null;
         Store store = null;
         for(int i = 0; i < AddStore.size(); i++){
@@ -63,10 +69,11 @@ public class Customer {
         
         order=new Order(orderNo, customer, date, time, quantity, product);   
         customer.setOrder(order);
-        System.out.println(customer.getOrder().toString());
-        System.out.println("The order was recevied successfully");
+        String result = customer.getOrder().toString()
+        + "\nThe order was recevied successfully\n";
         
         payment(store, order);
+        return result;
     }
     
     public void payment(Store store, Order order){
@@ -74,7 +81,7 @@ public class Customer {
                 order.getCustomer().getCustomerFirstName(),
                 order.getCustomer().getCustomerLastName(), order);
          
-         payment.printBill();
+         System.out.println(payment.printBill());
     }
     
     public String getCustomerFirstName() {
@@ -124,5 +131,10 @@ public class Customer {
     public void setOrder(Order order) {
         this.order = order;
     }
-   
+    
+    @Override
+    public String toString() {
+        return "Customer: \n" + "CustomerFirstName: " + CustomerFirstName + ", CustomerLastName: " + CustomerLastName + ", CustomerPhoneNumber: " + CustomerPhoneNumber + ", CustomerEmail: " + CustomerEmail + ", CustomerLocation: " + CustomerLocation;
+    }
+    
 }

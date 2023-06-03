@@ -43,6 +43,12 @@ public class Store {
         this.StoreName = StoreName;
     }
 
+    
+    public void AddStore(ArrayList <Store> AddStore, Store storeinfo){
+        AddStore.add(storeinfo);
+        System.out.println(storeinfo.toString());
+        System.out.println("Added Successfully \n");
+    }
  
     public String getUserFirstName() {
         return UserFirstName;
