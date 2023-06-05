@@ -23,8 +23,9 @@ public class StoreTest {
     @Test
     public void testAddStore() {
         ArrayList<Store> AddStore = new ArrayList<Store>();
-        Store instance = new Store("jawaher", "Ahmad", "0987654321", "jawaherAhmad@gmail.com", "12", "Cake");
+        Store instance = new Store("jawaher", "Ahmad", "0987654321",
+                "jawaherAhmad@gmail.com", "12", "Cake");
         instance.AddStore(AddStore, instance);
-        assertNotNull(instance);
+        assertNotNull(AddStore.get(0));
     }
 }

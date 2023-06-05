@@ -11,18 +11,15 @@ import java.util.Scanner;
  * @author armo0
  */
 public class Cake_Store {
-
         
         static ArrayList<Store> AddStore = new ArrayList<Store>();
         static ArrayList<Customer> AddCustomer = new ArrayList<Customer>();
         static int orderNo = 1;
         static int productID = 1;
         
-        
     public static void main(String[] args) {
-Scanner input = new Scanner(System.in);
         
-         
+         Scanner input = new Scanner(System.in);
          String choose = null;
         do{
             System.out.print("Choose L for Login and S for signup or E for exit: ");
@@ -36,7 +33,6 @@ Scanner input = new Scanner(System.in);
                 else{
                         Customer(input, AddCustomer); 
                 }
-            
         }
         else if(choose.equalsIgnoreCase("L"))
             System.out.println("Welcom Back");
